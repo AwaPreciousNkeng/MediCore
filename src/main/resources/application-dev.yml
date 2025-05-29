@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    username: root
+    password: 12345
+    url: jdbc:mysql://localhost:3306/medicore_db
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: pcodes
+    password: 12345
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+application:
+  security:
+    jwt:
+      secret-key: C9A7E13C4F5B678D29F6A13E88C3D7AEF5B6C2D49A7E10B6C3D2F4A8B1C9E7D3
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:5123/activate-account
+  file:
+    upload:
+      photo-output-path: ./uploads
+server:
+  port: 8080

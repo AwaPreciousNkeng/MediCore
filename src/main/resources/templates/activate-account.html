@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Activation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #005eb8;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            max-height: 50px;
+        }
+        .body {
+            padding: 30px 20px;
+            line-height: 1.6;
+        }
+        .body h1 {
+            color: #005eb8;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #005eb8;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #f4f7fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        .footer a {
+            color: #005eb8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!-- Replace src with your logo URL -->
+        <img src="https://example.com/your-clinic-logo.png" alt="Clinic Logo">
+    </div>
+    <div class="body">
+        <h1>Activate Your Account</h1>
+        <p class="greeting" th:text="'Hello ' + ${username} + ','"></p>
+        <p>Thank you for signing up! Please use the following activation code to activate your account:</p>
+        <div class="activation-code"><span th:text="${activation_code}"></span></div>
+        <p style="text-align: center;">
+            <a class="btn" th:href="${confirmationUrl}" target="_blank">Activate your account</a>
+        </p>
+        <p>This link will expire in <strong>24 hours</strong>.</p>
+    </div>
+    <div class="footer">
+        <p>Faculty Of Engineering, UB, South West Region, Cameroon | Tel: +237 683403788</p>
+        <p><a href="https://example.com/unsubscribe">Terms of service</a> | <a href="https://example.com/privacy">Privacy Policy</a></p>
+    </div>
+</div>
+</body>
+</html>
