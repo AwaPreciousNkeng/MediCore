@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #e6f2ff; /* very light blue */
+    color: #16148c;      /* dark blue text */
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* heading */
+  h1 {
+    text-align: center;
+    color: #16148c; /* medium blue */
+  }
+  
+  /* table styles */
+  #appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #appointments-table thead {
+    background: #16148c; /* medium blue */
+    color: white;
+  }
+  
+  #appointments-table th,
+  #appointments-table td {
+    padding: 12px 15px;
+    border: 1px solid #cce0ff;
+    text-align: left;
+  }
+  
+  #appointments-table tr:nth-child(even) {
+    background: #f2faff; /* alternating very light blue row */
+  }
+  
+  /* hover highlight */
+  #appointments-table tbody tr:hover {
+    background: #d6eaff;
+  }
+  

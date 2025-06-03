@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Manager - Staff Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Health Manager</h2>
+    <form class="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your full name" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+
+      <label for="role">Choose Role</label>
+      <select name="role" id="role" class="sl">
+        <option value="administrator">Administrator</option>
+        <option value="doctor">Doctor</option>
+        <option value="lab_technician">Lab Technician</option>
+        <option value="nurse">Nurse</option>
+      </select>
+
+      <button type="submit">Login</button>
+    </form>
+    <p class="note">Authorized Personnel Only</p>
+  </div>
+
+  <script>
+    document.querySelector('.login-form').addEventListener('submit', function(event) {
+      event.preventDefault();  // stop actual form submission
+
+      const role = document.getElementById('role').value;
+
+      switch (role) {
+        case 'administrator':
+          window.location.href = '../Acc Mangement/account.html';
+          break;
+        case 'doctor':
+          window.location.href = 'homeD.html';
+          break;
+        case 'nurse':
+          window.location.href = 'homeN.html';
+          break;
+        case 'lab_technician':
+          window.location.href = '../view-and edit/viewL.html';
+          break;
+        default:
+          alert('Please select a valid role.');
+      }
+    });
+  </script>
+</body>
+</html>

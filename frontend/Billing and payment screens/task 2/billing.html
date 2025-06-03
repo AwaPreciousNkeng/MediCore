@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Billing System -MediPay</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat"></i>
+                <span>MediPay</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i> 
+                    <span>Dashboard</span>
+                </a>
+                <a href="#payment" class="nav-link" data-page="payment">
+                    <i class="fas fa-credit-card"></i> 
+                    <span>Make Payment</span>
+                </a>
+                <a href="#history" class="nav-link" data-page="history">
+                    <i class="fas fa-history"></i> 
+                    <span>Billing History</span>
+                </a>
+            </div>
+            <div class="nav-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Patient Selector -->
+    <div class="patient-selector">
+        <div class="selector-container">
+            <div class="current-patient">
+                <div class="patient-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="patient-info">
+                    <span class="label">Selected Patient</span>
+                    <span class="name" id="current-patient-name">NTEBAN JUNIOR</span>
+                </div>
+            </div>
+            <div class="selector-dropdown">
+                <button class="dropdown-btn" id="patient-dropdown-btn">
+                    <span>Switch Patient</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu" id="patient-dropdown-menu">
+                    <div class="dropdown-header">Select Patient</div>
+                    <div class="patient-list" id="patient-list">
+                        <!-- Patient options will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Patient Info Bar -->
+        <div class="patient-info-bar">
+            <div class="patient-details">
+                <div class="patient-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="patient-text">
+                    <h3 id="patient-name">NTEBAN JUNIOR</h3>
+                    <p id="patient-id">Patient ID: FET-MED-FE23A125</p>
+                </div>
+            </div>
+            <div class="patient-status">
+                <div class="status-item">
+                    <span class="status-label">Insurance</span>
+                    <span class="status-value" id="patient-insurance">FET Health Insurance</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Last Visit</span>
+                    <span class="status-value" id="last-visit">May 15, 2025</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Balance</span>
+                    <span class="status-value balance-due" id="patient-balance">178,500 CFA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <div class="page-header">
+                <h1>Billing Dashboard</h1>
+                <p>Manage your medical bills and payments</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Outstanding Balance Card -->
+                <div class="card balance-card">
+                    <div class="card-header">
+                        <h3>Outstanding Balance</h3>
+                        <span class="balance-badge">Due</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="balance-amount">
+                            <span class="amount" id="outstanding-amount">178,500</span>
+                            <span class="currency">CFA</span>
+                        </div>
+                        <div class="balance-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Last Payment</span>
+                                <span class="detail-value">120.00 CFA on Apr 28, 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Payment Due</span>
+                                <span class="detail-value">May 30, 2025</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="showPage('payment')">Make Payment</button>
+                    </div>
+                </div>
+
+                <!-- Recent Services Card -->
+                <div class="card services-card">
+                    <div class="card-header">
+                        <h3>Recent Services</h3>
+                        <span class="services-date">Last 30 days</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-item">
+                            <div class="service-info">
+                                <div class="service-name">General Consultation</div>
+                                <div class="service-date">May 15, 2025</div>
+                            </div>
+                            <div class="service-amount">85.00 CFA</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-info">
+                                <div class="service-name">Blood Test - Complete Panel</div>
+                                <div class="service-date">May 15, 2025</div>
+                            </div>
+                            <div class="service-amount">120.00 CFA</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-info">
+                                <div class="service-name">X-Ray - Chest</div>
+                                <div class="service-date">May 10, 2025</div>
+                            </div>
+                            <div class="service-amount">150.00 CFA</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-info">
+                                <div class="service-name">Prescription - Antibiotics</div>
+                                <div class="service-date">May 15, 2025</div>
+                            </div>
+                            <div class="service-amount">40.00 CFA</div>
+                        </div>
+                        <div class="view-all-link">
+                            <a href="#history" onclick="showPage('history')">View All Services <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insurance Coverage Card -->
+                <div class="card insurance-card">
+                    <div class="card-header">
+                        <h3>Insurance Coverage</h3>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="insurance-provider">
+                            <span class="provider-label">Provider</span>
+                            <span class="provider-name">FET Health Insurance</span>
+                        </div>
+                        <div class="insurance-details">
+                            <div class="insurance-item">
+                                <span class="item-label">Policy Number</span>
+                                <span class="item-value">FET2025</span>
+                            </div>
+                            <div class="insurance-item">
+                                <span class="item-label">Coverage</span>
+                                <span class="item-value">70%</span>
+                            </div>
+                            <div class="insurance-item">
+                                <span class="item-label">Deductible</span>
+                                <span class="item-value">500.00 CFA   (350.00 CFA used)</span>
+                            </div>
+                        </div>
+                        <div class="coverage-bar">
+                            <div class="coverage-progress" style="width: 70%"></div>
+                        </div>
+                        <div class="coverage-text">
+                            <span>70% of services covered by FET-insurance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods Card -->
+                <div class="card payment-methods-card">
+                    <div class="card-header">
+                        <h3>Payment Methods</h3>
+                        <button class="btn btn-sm btn-outline" onclick="showPage('payment')">Add New</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="saved-method">
+                            <div class="method-icon mtn">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <div class="method-name">MTN Mobile Money</div>
+                                <div class="method-number">•••• 5678</div>
+                            </div>
+                            <div class="method-default">Default</div>
+                        </div>
+                        <div class="saved-method">
+                            <div class="method-icon orange">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <div class="method-name">Orange Money</div>
+                                <div class="method-number">•••• 9012</div>
+                            </div>
+                        </div>
+                        <div class="saved-method">
+                            <div class="method-icon card">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="method-details">
+                                <div class="method-name">Credit/Visa Card</div>
+                                <div class="method-number">•••• 4242</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Page -->
+        <div id="payment" class="page">
+            <div class="page-header">
+                <h1>Make a Payment</h1>
+                <p>Choose your preferred payment method</p>
+            </div>
+
+            <div class="payment-container">
+                <div class="payment-form-card">
+                    <form class="payment-form" id="payment-form">
+                        <div class="form-section">
+                            <h3>Payment Amount</h3>
+                            <div class="amount-options">
+                                <label class="amount-option">
+                                    <input type="radio" name="payment-amount" value="full" checked>
+                                    <div class="option-content">
+                                        <span class="option-label">Full Amount</span>
+                                        <span class="option-value">245.00 CFA</span>
+                                    </div>
+                                </label>
+                                <label class="amount-option">
+                                    <input type="radio" name="payment-amount" value="partial">
+                                    <div class="option-content">
+                                        <span class="option-label">Partial Payment</span>
+                                        <div class="custom-amount">
+                                            <span class="currency-symbol">CFA</span>
+                                            <input type="text" id="custom-amount" placeholder="0.00" disabled>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-methods">
+                                <label class="payment-method-option">
+                                    <input type="radio" name="payment-method" value="mtn" checked>
+                                    <div class="method-content">
+                                        <div class="method-icon mtn">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <span>MTN Mobile Money</span>
+                                    </div>
+                                </label>
+                                <label class="payment-method-option">
+                                    <input type="radio" name="payment-method" value="orange">
+                                    <div class="method-content">
+                                        <div class="method-icon orange">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <span>Orange Money</span>
+                                    </div>
+                                </label>
+                                <label class="payment-method-option">
+                                    <input type="radio" name="payment-method" value="card">
+                                    <div class="method-content">
+                                        <div class="method-icon card">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <span>Credit/Debit Card</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Money Details (MTN) -->
+                        <div class="form-section mobile-money-details" id="mtn-details">
+                            <h3>MTN Mobile Money Details</h3>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="mtn-number">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <input type="text" id="mtn-number" placeholder="e.g. 077 1234 567">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="mtn-name">Account Name</label>
+                                    <input type="text" id="mtn-name" placeholder="Name registered with MTN">
+                                </div>
+                            </div>
+                            <div class="mobile-money-note">
+                                <i class="fas fa-info-circle"></i>
+                                <p>You will receive a prompt on your phone to confirm this payment.</p>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Money Details (Orange) -->
+                        <div class="form-section mobile-money-details" id="orange-details" style="display: none;">
+                            <h3>Orange Money Details</h3>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="orange-number">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <input type="text" id="orange-number" placeholder="e.g. 075 1234 567">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="orange-name">Account Name</label>
+                                    <input type="text" id="orange-name" placeholder="Name registered with Orange">
+                                </div>
+                            </div>
+                            <div class="mobile-money-note">
+                                <i class="fas fa-info-circle"></i>
+                                <p>You will receive a prompt on your phone to confirm this payment.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="form-section card-details" id="card-details" style="display: none;">
+                            <h3>Card Details</h3>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="card-number">Card Number</label>
+                                    <div class="input-with-icon">
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                                        <i class="fas fa-credit-card card-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry Date</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="cardholder-name">Cardholder Name</label>
+                                    <input type="text" id="cardholder-name" placeholder="John Doe">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Billing Information</h3>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="email">Email Receipt</label>
+                                    <input type="email" id="email" placeholder="email@example.com">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" placeholder="123 Main Street">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">Postal Code</label>
+                                    <input type="text" id="zip" placeholder="12345">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="showPage('dashboard')">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-lock"></i>
+                                Complete Payment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="payment-summary-card">
+                    <h3>Payment Summary</h3>
+                    <div class="summary-services">
+                        <h4>Services</h4>
+                        <div class="summary-item">
+                            <span>General Consultation</span>
+                            <span>85.00 CFA</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Blood Test - Complete Panel</span>
+                            <span>120.00 CFA</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>X-Ray - Chest</span>
+                            <span>150.00 CFA</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Prescription - Antibiotics</span>
+                            <span>40.00 CFA</span>
+                        </div>
+                    </div>
+                    <div class="summary-calculations">
+                        <div class="summary-item">
+                            <span>Subtotal</span>
+                            <span>395.00 CFA</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Insurance Coverage (70%)</span>
+                            <span>-150.00 CFA</span>
+                        </div>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>Total Due</span>
+                        <span id="total-amount">178,500 CFA</span>
+                    </div>
+                    <div class="security-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your payment information is encrypted and secure</span>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-note">
+                <i class="fas fa-info-circle"></i>
+                <p>Payments are processed securely through external payment providers. No funds are stored on this platform.</p>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="history" class="page">
+            <div class="page-header">
+                <h1>Billing History</h1>
+                <p>View and manage your medical bills and payment history</p>
+            </div>
+
+            <div class="history-controls">
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search bills...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="test">Lab Tests</option>
+                            <option value="procedure">Procedures</option>
+                            <option value="medication">Medication</option>
+                        </select>
+                        <select id="status-filter">
+                            <option value="">All Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="covered">Insurance Covered</option>
+                        </select>
+                        <select id="period-filter">
+                            <option value="">All Time</option>
+                            <option value="last-month">Last Month</option>
+                            <option value="last-3-months">Last 3 Months</option>
+                            <option value="last-year">Last Year</option>
+                        </select>
+                        <button class="btn btn-outline" id="export-btn">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Invoice #</th>
+                            <th>Date</th>
+                            <th>Service</th>
+                            <th>Department</th>
+                            <th>Total</th>
+                            <th>Insurance</th>
+                            <th>Your Cost</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="pagination-btn" id="prev-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <div class="pagination-info">
+                    <span id="pagination-text">Showing 1-10 of 25</span>
+                </div>
+                <button class="pagination-btn" id="next-btn">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

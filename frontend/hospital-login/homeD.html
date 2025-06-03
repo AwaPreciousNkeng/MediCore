@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+
+      body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('/images/background.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+    .navbar {
+      background-color: #16148c;
+      padding: 15px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      flex: 1;
+      min-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #16148c;
+
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>Health Manager</h1>
+    <div>
+      <a href="index.html">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Welcome to the Dashboard</h2>
+    <p>Select an option to proceed:</p>
+
+    <div class="cards">
+        
+      <div class="card">
+        <a href="../view-and edit/viewD.html">
+        <h3>Patients</h3>
+        </a>
+        <p>Update patient records.</p>
+      </div>
+
+      <div class="card">
+        <a href="../Appointment/upcomingAppointments.html">
+        <h3>View Upcoming Appointments</h3>
+        </a>
+        <p>View appointments.</p>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

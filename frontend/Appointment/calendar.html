@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Availability</title>
+  <link rel="stylesheet" href="calendarStyle.css" />
+ 
+</head>
+<body>
+
+  <div class="navigation">
+    <button onclick="changeWeek(-1)">Previous Week</button>
+    <a href="/Appointment/listOfDoctors.html">return to list of doctors</a>
+    <button onclick="changeWeek(1)">Next Week</button>
+  </div>
+
+  <header>
+    <h2 id="doctorHeader">Doctor's Availability</h2>
+  </header>
+  
+  <div id="schedule"></div>
+  
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    
+    function formatDateDisplay(date) {
+      const options = { weekday: "short", month: "short", day: "numeric" };
+      return date.toLocaleDateString(undefined, options);
+    }
+    
+    function formatTime(date) {
+      const options = { hour: "2-digit", minute: "2-digit", hour12: true };
+      return date.toLocaleTimeString(undefined, options);
+    }
+    
+    function formatDateURL(date) {
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+      return `${yyyy}-${mm}-${dd}`;
+    }
+    
+    function getMonday(date) {
+      const d = new Date(date);
+      const day = d.getDay(); 
+      if (day === 0) {
+        
+        d.setDate(d.getDate() + 1);
+      } else {
+        
+        d.setDate(d.getDate() - (day - 1));
+      }
+      d.setHours(0, 0, 0, 0);
+      return d;
+    }
+    
+    let currentWeekStart = getMonday(new Date());
+    
+    const doctorName = getQueryParam("doctor") || "Doctor Unknown";
+    const specialty = getQueryParam("specialty") || "";
+    document.getElementById("doctorHeader").textContent =
+      "Availability for " + doctorName + (specialty ? " (" + specialty + ")" : "");
+    
+    function generateSchedule() {
+      const scheduleDiv = document.getElementById("schedule");
+      scheduleDiv.innerHTML = ""; 
+      
+      for (let i = 0; i < 6; i++) {
+        let dayDate = new Date(currentWeekStart);
+        dayDate.setDate(currentWeekStart.getDate() + i);
+        
+        let dayDiv = document.createElement("div");
+        dayDiv.className = "day";
+        
+        let dayHeader = document.createElement("h3");
+        dayHeader.textContent = formatDateDisplay(dayDate);
+        dayDiv.appendChild(dayHeader);
+        
+        const startHour = 8;
+        const endHour = 16;
+        for (let hour = startHour; hour < endHour; hour++) {
+          for (let minute of [0, 30]) {
+            let slotTime = new Date(dayDate);
+            slotTime.setHours(hour, minute, 0, 0);
+            let slotDiv = document.createElement("div");
+            slotDiv.className = "time-slot";
+            
+            let link = document.createElement("a");
+            const dateForURL = formatDateURL(dayDate);
+            const timeForURL = formatTime(slotTime);
+            
+            link.href = "appointment_form.html?doctor=" + encodeURIComponent(doctorName) +
+                        "&date=" + encodeURIComponent(dateForURL) +
+                        "&time=" + encodeURIComponent(timeForURL);
+            link.textContent = timeForURL;
+            
+            slotDiv.appendChild(link);
+            dayDiv.appendChild(slotDiv);
+          }
+        }
+        
+        scheduleDiv.appendChild(dayDiv);
+      }
+    }
+
+    function changeWeek(delta) {
+      currentWeekStart.setDate(currentWeekStart.getDate() + delta * 7);
+      generateSchedule();
+    }
+    
+    generateSchedule();
+  </script>
+</body>
+</html>

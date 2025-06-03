@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="appFormStyle.css" />
+</head>
+<body>
+  <header>
+    <h1>Book Appointment</h1>
+  </header>
+
+  <section id="appointmentFormSection">
+    <form id="appointmentForm">
+      <label for="patientName">Your Name:</label>
+      <input type="text" id="patientName" value=" " readonly />  <!--Name should be the name of the patient-->
+
+      <label for="doctorName">Doctor:</label>
+      <input type="text" id="doctorName" readonly />
+
+      <label for="appointmentDate">Date:</label>
+      <input type="text" id="appointmentDate" readonly />
+
+      <label for="appointmentTime">Time:</label>
+      <input type="text" id="appointmentTime" readonly />
+
+      <label for="notes">Notes to Doctor:</label>
+      <textarea id="notes" rows="4" placeholder="Enter any relevant information..."></textarea>
+
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const doctor = params.get("doctor") || "";
+    const date = params.get("date") || "";
+    const time = params.get("time") || "";
+
+    document.getElementById("doctorName").value = decodeURIComponent(doctor);
+    document.getElementById("appointmentDate").value = date;
+    document.getElementById("appointmentTime").value = decodeURIComponent(time);
+
+    document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Appointment Booked!");
+    });
+  </script>
+</body>
+</html>

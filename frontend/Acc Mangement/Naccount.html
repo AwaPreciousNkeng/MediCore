@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Patient Accounts</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+
+  <nav id="sidebar">
+    <ul id="menu">
+      <li><a href="Naccount.html">Create Patient Account</a></li>
+      
+      <a href="../hospital-login/homeN.html">Home</a>
+    </ul>
+  </nav>
+
+  <main>
+
+    <form id="createUserForm">
+      <h2>Create Patient </h2>
+      <input type="text" placeholder="Name" name="name" required />
+      <input type="email" placeholder="Email" name="email" required />
+      <input type="password" placeholder="Password" name="password" required />
+      <button type="submit">Create</button>
+    </form>
+
+    <!-- User List -->
+    <section id="userList">
+      <h2>Existing Users</h2>
+      <ul id="users"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

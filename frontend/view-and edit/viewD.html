@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Consultation</title>
+<link rel="stylesheet" href="/view-and edit/view.css" />
+</head>
+
+<body>
+<div class="container">
+<h2>Update Patient Records</h2>
+
+<section id="search-section">
+    <h2>View Vital Signs</h2>
+    <input type="text" id="searchInput" placeholder="Search for patient's full name " /> <!--Search is done in the database-->
+  </section>
+  <!--code to return patient's vital signs-->
+<form>
+    <label for="name">Patient Name</label>
+    <input type="text" id="name" placeholder="Enter Patient's name" required />
+
+    <label for="Consultation">Consultation</label>
+    <input type="text" id="Consultation" placeholder="Enter Consultation" required />
+    
+    <label for="test">Tests to be Conducted</label>
+    <input type="text" id="test" placeholder="Enter test to be Conducted" required />
+
+    <label for="Prescription">Prescription</label>
+    <input type="text" id="Prescription" placeholder="Enter Prescription" required />
+
+    <label for="other">Other</label>
+    <input type="text" id="other" placeholder="Other" required />
+
+
+<button type="submit" class="btn">Save</button> <br><br>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+       background-image: url('/images/background.png'); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 60px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 70%;
+  max-width: 1000px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+   h1 {
+  color: #16148c;
+  margin-bottom: 30px;
+  font-size: 3.5rem;
+}
+    
+    p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+    .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+    a {
+  text-decoration: none;
+  padding: 15px 30px;
+  background-color: #16148c;
+  color: white;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+   a:hover {
+  background-color: #383690;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px #383690 (0,0,0,0.2);
+}
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Welcome to Health Manager!</h1>
+  <p>Manage patients and appointments efficiently.</p>
+  <div class="buttons">
+    <a href="./hospital-login/login.html">Login - As Patient</a>
+    <a href="./hospital-login/loginH.html">Login - As Hospital Staff</a>
+  </div>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create User Account</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+
+  <!-- Role-Based Navigation -->
+  <nav id="sidebar">
+    <ul id="menu">
+      <li><a href="account.html">Create Account</a></li>
+      <li class="admin-only"><a href="deleteAccount.html">Delete Account</a></li>
+    </ul>
+  </nav>
+
+  <!-- Admin Account Management Section -->
+  <main>
+    <h1>User Management</h1>
+
+    <!-- Create User Form -->
+    <form id="createUserForm">
+      <h2>Create User</h2>
+      <input type="text" placeholder="Name" name="name" required />
+      <input type="email" placeholder="Email" name="email" required />
+      <input type="text" placeholder="Role (nurse/Lab technician/doctor/patient)" name="role" required />
+      <input type="password" placeholder="Password" name="password" required />
+      <button type="submit">Create</button>
+    </form>
+
+    <!-- User List -->
+    <section id="userList">
+      <h2>Existing Users</h2>
+      <ul id="users"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

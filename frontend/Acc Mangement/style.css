@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Sidebar Navigation */
+nav {
+  width: 220px;
+  background: #2c3e50;
+  color: white;
+  height: 100vh;
+  padding-top: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  border-bottom: 1px solid #3f5368;
+}
+
+nav a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #1abc9c;
+}
+
+/* Main Content */
+main {
+  margin-left: 220px;
+  padding: 30px;
+  width: calc(100% - 220px);
+  overflow-y: auto;
+}
+
+/* Section Titles */
+h1, h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.2s;
+}
+
+form input:focus {
+  border-color: #1abc9c;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #3e3a8b;
+}
+
+/* User List Styling */
+#userList {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#userList ul {
+  list-style: none;
+  padding: 0;
+}
+
+#userList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#userList li button {
+  background: #e74c3c;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#userList li button:hover {
+  background: #c0392b;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="availabilityStyles.css" />
+</head>
+<body>
+  <header>
+    <h1>Book Appointment</h1>
+  </header>
+  <section id="search-section">
+    <input type="text" id="searchInput" placeholder="Search by name or specialty..." />
+  </section>
+  <section id="doctor-grid">
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Ashu%20Ndip%20Agbor&specialty=General%20Practitioner">
+      <h3>Dr. Ashu Ndip Agbor</h3>
+      <p>General Practitioner</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Kinge%20Daniel&specialty=General%20Practitioner">
+      <h3>Dr. Kinge Daniel</h3>
+      <p>General Practitioner</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Kingsley%20Molua&specialty=Cardiologist">
+      <h3>Dr. Kingsley Molua</h3>
+      <p>Cardiologist</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Lucy%20Tabi&specialty=Dermatologist">
+      <h3>Dr. Lucy Tabi</h3>
+      <p>Dermatologist</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Arrey%20Takang&specialty=General%20Practitioner">
+      <h3>Dr. Arrey Takang</h3>
+      <p>General Practitioner</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Luther%20Jr&specialty=General%20Practitioner">
+      <h3>Dr. Luther Jr</h3>
+      <p>General Practitioner</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Robert%20Elijah&specialty=Cardiologist">
+      <h3>Dr. Robert Elijah</h3>
+      <p>Cardiologist</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Adam%20Lewis&specialty=Dermatologist">
+      <h3>Dr. Adam Lewis</h3>
+      <p>Dermatologist</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Michael%20Richardison&specialty=General%20Practitioner">
+      <h3>Dr. Michael Richardison</h3>
+      <p>General Practitioner</p>
+    </a>
+    <a class="doctor-card" href="calendar.html?doctor=Dr.%20Angela%20Lewis&specialty=General%20Practitioner">
+      <h3>Dr. Angela Lewis</h3>
+      <p>General Practitioner</p>
+    </a>
+
+  </section>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keyup", function() {
+      const filter = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll(".doctor-card");
+      cards.forEach(function(card) {
+        const name = card.querySelector("h3").textContent.toLowerCase();
+        const specialty = card.querySelector("p").textContent.toLowerCase();
+        if (name.includes(filter) || specialty.includes(filter)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
