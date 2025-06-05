@@ -16,7 +16,7 @@ public interface PatientRecordRepository extends JpaRepository<PatientRecord, Lo
     Optional<PatientRecord> findByPatientIdAndUserId(Integer patientId, Integer userId);
 
     @Query("""
-            SELECT record
+            SELECT  record
             FROM PatientRecord  record
             WHERE record.patient.personnel.id = :patientId
             AND record.patient.id = :patientId
